@@ -19,6 +19,7 @@ class Event < ApplicationRecord
     validates :content
     validates :held_at
   end
+  validates :only_woman, inclusion: [true, false]
 
   def past?
     held_at < Time.current
@@ -27,4 +28,9 @@ class Event < ApplicationRecord
   def future?
     !past?
   end
+
+  def only_woman?
+    only_woman == true
+  end
+  
 end
